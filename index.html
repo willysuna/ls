@@ -1,0 +1,49 @@
+---
+---
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+
+		{% if page.redir_to %}
+		<title>Redirecting...</title>
+		<meta http-equiv="refresh" content="0; url={{ page.redir_to }}">
+		<link rel="canonical" href="{{ page.redir_to }}" />
+		<script type="text/javascript">
+			window.location.href = "{{ page.redir_to }}";
+		</script>
+		{% else %}
+		<title>listing | divert v2</title>
+
+		<style>
+			* {
+				font-family: Helvetica, sans-serif;
+			}
+			a {
+				color: black;
+			}
+		</style>
+		{% endif %}
+	</head>
+	<body>
+		<h1>divert</h1>
+		<hr>
+		{% if page.redir_to %}
+		If you are not redirected, please follow <a href="{{ page.redir_to }}">this link</a>.
+		{% else %}
+		<div style="width: 850px; margin-top: 15px;">
+			<div id="link_wrapper">
+				<p>short links:</p>
+				<ul id="links">
+					{% for d in site.diversions %}
+						<li>
+							<a href="./{{ d.code }}">{{ d.code }}</a> &rarr; <input type="text" style="width: 600px;" value="{{ d.redir }}" readonly>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+	</body>
+</html>
