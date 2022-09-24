@@ -1,5 +1,5 @@
 ---
 layout: divert
-code: insta
+code: instagram
 redir: https://instagram.com/willysunadev
 ---
